@@ -1,6 +1,3 @@
-Pega esto completo en tu `README.md`:
-
-````markdown
 # ValoStats
 
 ValoStats es un proyecto de **minería de datos aplicado a estadísticas de jugadores de Valorant**.  
