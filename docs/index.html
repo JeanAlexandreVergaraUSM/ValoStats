@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valostats</title>
+  <meta
+    name="description"
+    content="Valostats — análisis de perfiles de jugadores de Valorant."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-logo">V</div>
+      <div>
+        <div class="brand-title">VALOSTATS</div>
+        <div class="brand-subtitle">Player analysis for Valorant</div>
+      </div>
+    </div>
+
+    <nav class="topnav">
+      <a href="#analyzer">Analizador</a>
+      <a href="#tops">Top jugadores</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">VALORANT PLAYER ANALYSIS</div>
+        <h1>Busca un jugador y descubre cómo juega.</h1>
+        <p>
+          Valostats analiza estadísticas reales para mostrar el perfil principal del jugador,
+          su perfil secundario, sus puntos fuertes y una recomendación personalizada.
+        </p>
+
+        <div class="hero-search">
+          <div class="search-box">
+            <input
+              type="text"
+              id="playerSearch"
+              list="playerOptions"
+              placeholder="Busca un jugador por nombre o tag..."
+              autocomplete="off"
+            />
+            <datalist id="playerOptions"></datalist>
+          </div>
+          <button id="analyzeBtn" class="primary-btn">Analizar jugador</button>
+        </div>
+
+        <div class="hero-tags">
+          <span class="pill">Perfil principal</span>
+          <span class="pill">Perfil secundario</span>
+          <span class="pill">Radar comparativo</span>
+          <span class="pill">Interpretación</span>
+          <span class="pill">Recomendación personalizada</span>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="hero-panel glass-card">
+          <div class="mini-title">Perfiles disponibles</div>
+          <div id="profileChips" class="profile-chip-wrap"></div>
+        </div>
+
+        <div class="hero-panel glass-card">
+          <div class="mini-title">Qué verás del jugador</div>
+          <div class="mini-metrics">
+            <div class="mini-metric-item">
+              <span>Perfil principal</span>
+              <strong>Estilo dominante</strong>
+            </div>
+            <div class="mini-metric-item">
+              <span>Perfil secundario</span>
+              <strong>Tendencia complementaria</strong>
+            </div>
+            <div class="mini-metric-item">
+              <span>Interpretación</span>
+              <strong>Lectura del estilo</strong>
+            </div>
+            <div class="mini-metric-item">
+              <span>Recomendación</span>
+              <strong>Mejoras y agentes sugeridos</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="analyzer" class="section analyzer-section">
+      <div class="section-header">
+        <h2>Analizador de jugador</h2>
+        <p>Perfil, datos clave y lectura del estilo de juego.</p>
+      </div>
+
+      <div class="analyzer-layout">
+        <div class="analyzer-left">
+          <div class="glass-card spotlight-card">
+            <div class="spotlight-header">
+              <div>
+                <div class="eyebrow small">PLAYER SPOTLIGHT</div>
+                <h3 id="playerName">Selecciona un jugador</h3>
+                <p id="playerTag" class="muted">-</p>
+              </div>
+            </div>
+
+            <div class="profile-pair">
+              <div class="profile-main">
+                <span class="small-label">Perfil principal</span>
+                <strong id="primaryProfile">-</strong>
+              </div>
+              <div class="profile-secondary">
+                <span class="small-label">Perfil secundario</span>
+                <strong id="secondaryProfile">-</strong>
+              </div>
+            </div>
+
+            <div class="mix-line">
+              <span class="small-label">Lectura del estilo</span>
+              <strong id="profileMix">-</strong>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="glass-card kpi-card">
+              <span>Kills</span>
+              <strong id="killsValue">-</strong>
+            </div>
+            <div class="glass-card kpi-card">
+              <span>Deaths</span>
+              <strong id="deathsValue">-</strong>
+            </div>
+            <div class="glass-card kpi-card">
+              <span>Assists</span>
+              <strong id="assistsValue">-</strong>
+            </div>
+            <div class="glass-card kpi-card">
+              <span>K/D</span>
+              <strong id="kdValue">-</strong>
+            </div>
+            <div class="glass-card kpi-card">
+              <span>HS%</span>
+              <strong id="hsValue">-</strong>
+            </div>
+            <div class="glass-card kpi-card">
+              <span>Win%</span>
+              <strong id="winValue">-</strong>
+            </div>
+          </div>
+
+          <div class="glass-card recommendation-card">
+            <div class="mini-title">Interpretación del perfil</div>
+            <p id="profileExplanation" class="profile-text">-</p>
+          </div>
+
+          <div class="glass-card recommendation-card recommendation-accent">
+            <div class="mini-title">Recomendación personalizada</div>
+            <p id="recommendationText" class="profile-text">-</p>
+          </div>
+        </div>
+
+        <div class="analyzer-right">
+          <div class="glass-card chart-card">
+            <div class="card-title-wrap">
+              <h3>Jugador vs promedio de su perfil</h3>
+              <span class="mini-badge">Comparación relativa</span>
+            </div>
+            <div id="playerRadarChart" class="chart"></div>
+          </div>
+
+          <div class="glass-card chart-card">
+            <div class="card-title-wrap">
+              <h3>Atributos del jugador vs promedio global</h3>
+              <span class="mini-badge">Comparación general</span>
+            </div>
+            <div id="playerComparisonChart" class="chart"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tops" class="section">
+      <div class="section-header">
+        <h2>Top jugadores por perfil</h2>
+        <p>
+          Cada ranking usa solo jugadores con muestra suficiente y muestra a los mejores dentro
+          de cada estilo de juego.
+        </p>
+      </div>
+
+      <div id="topBoardsWrap"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>VALOSTATS · GitHub Pages Demo</div>
+    <div>Análisis de perfiles de jugadores de Valorant</div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
