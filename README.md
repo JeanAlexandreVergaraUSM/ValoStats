@@ -295,26 +295,6 @@ La web permite:
 
 ---
 
-## Publicar en GitHub Pages
-
-La carpeta `docs/` está preparada para publicarse directamente con GitHub Pages.
-
-### Pasos
-
-1. Ve al repositorio en GitHub.
-2. Entra a **Settings**.
-3. Luego entra a **Pages**.
-4. En **Build and deployment**, elige **Deploy from a branch**.
-5. En **Branch**, selecciona:
-
-   * rama: `main`
-   * carpeta: `/docs`
-6. Guarda los cambios.
-
-GitHub generará una URL pública para el sitio.
-
----
-
 ## Notas importantes
 
 ### 1. Sobre la clasificación
@@ -351,12 +331,6 @@ El sistema no pretende reemplazar el análisis experto del juego, sino entregar 
 * CSS
 * JavaScript
 * GitHub Pages
-
----
-
-## Autor
-
-Proyecto desarrollado por **Jean Alexandre Vergara** para la asignatura **TEL354 - Minería de datos**, Universidad Técnica Federico Santa María.
 
 ---
 
