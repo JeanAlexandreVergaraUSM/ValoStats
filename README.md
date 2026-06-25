@@ -21,7 +21,7 @@ La aplicación final incluye:
 
 | Nombre | Nickname | ROL USM | Correo USM |
 |---|---|---:|---|
-| Lorenzo Gonzales | Vicentejbs | 202230516-9 | vicente.beiza@usm.cl |
+| Lorenzo Gonzales | Lorenx003 | 202230550-9 | lorenzo.gonzalez@usm.cl |
 | Matias Perelli | matiasperelli | 202230525-8 | matias.perelli@usm.cl |
 | Jean Alexandre | JeanAlexandreVergaraUSM | 202230562-2 | jean.alexandre@usm.cl |
 
