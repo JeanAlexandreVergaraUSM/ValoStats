@@ -5,7 +5,11 @@ const state = {
   isAnalyzing: false,
 };
 
-const API_ANALYZE_URL = "/api/analyze";
+const API_BASE_URL = window.location.hostname.includes("github.io")
+  ? "https://valostats-backend.onrender.com"
+  : "";
+
+const API_ANALYZE_URL = `${API_BASE_URL}/api/analyze`;
 
 const PROFILE_COLORS = {
   "Alto impacto": "#7c83ff",
