@@ -17,27 +17,6 @@ La aplicación final incluye:
 
 ---
 
-## Tabla de contenido
-
-1. [Descripción del proyecto](#descripción-del-proyecto)
-2. [Objetivo](#objetivo)
-3. [Funcionamiento general](#funcionamiento-general)
-4. [Perfiles de jugador](#perfiles-de-jugador)
-5. [Metodología utilizada](#metodología-utilizada)
-6. [Scraper y análisis en vivo](#scraper-y-análisis-en-vivo)
-7. [Demo pública en GitHub Pages](#demo-pública-en-github-pages)
-8. [Estructura del proyecto](#estructura-del-proyecto)
-9. [Requisitos](#requisitos)
-10. [Instalación](#instalación)
-11. [Uso local del proyecto](#uso-local-del-proyecto)
-12. [Generar datos para la web](#generar-datos-para-la-web)
-13. [Publicar en GitHub Pages](#publicar-en-github-pages)
-14. [Notas importantes](#notas-importantes)
-15. [Tecnologías utilizadas](#tecnologías-utilizadas)
-16. [Estado del proyecto](#estado-del-proyecto)
-
----
-
 ## Descripción del proyecto
 
 Este proyecto toma estadísticas de jugadores de Valorant y construye un pipeline completo de minería de datos para transformar datos de partidas en información interpretable.
