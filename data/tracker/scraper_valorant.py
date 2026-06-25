@@ -244,6 +244,37 @@ class ValorantTrackerScraper:
         self.page = None
 
     async def start(self):
+
+        self.playwright = await async_playwright().start()
+
+        if os.getenv("RUNNING_IN_RENDER") == "1":
+            print("Ejecutando en Render: usando Chromium interno de Playwright.")
+
+            self.browser = await self.playwright.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                    "--disable-blink-features=AutomationControlled",
+                    "--window-size=1400,1000",
+                ],
+            )
+
+            self.context = await self.browser.new_context(
+                viewport={"width": 1400, "height": 1000},
+                locale="es-CL",
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/125.0.0.0 Safari/537.36"
+                ),
+            )
+
+            self.page = await self.context.new_page()
+            return
+
+
         launch_chrome_debug_if_needed()
 
         self.playwright = await async_playwright().start()
@@ -692,7 +723,7 @@ class ValorantTrackerScraper:
         if len(values) < 14:
             print("Encontré al jugador, pero no encontré las 14 métricas esperadas.")
             print(f"  Métricas encontradas: {values}")
-            return []
+            return None
 
         kills = parse_int(values[2])
         deaths = parse_int(values[3])
