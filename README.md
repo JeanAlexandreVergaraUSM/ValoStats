@@ -409,7 +409,40 @@ Dependencias principales:
 
 ---
 
-## Instalación
+## Reproducción rápida del análisis de demo
+
+Para reproducir el análisis usado en la demo pública, ejecutar:
+
+```powershell
+python data/tracker/scraper_valorant.py "PoloGB#LAS"
+python src/rank_reference_features.py
+python src/run_full_analysis.py "PoloGB#LAS" --skip-scraper
+python scripts/export_web_data.py
+```
+
+Luego iniciar la versión local con backend:
+
+```powershell
+uvicorn backend.api:app --reload
+```
+
+Abrir en el navegador:
+
+```text
+http://localhost:8000
+```
+
+También se puede revisar la versión pública en GitHub Pages, que utiliza los JSON previamente generados:
+
+```text
+https://jeanalexandrevergarausm.github.io/ValoStats/
+```
+
+---
+
+---
+
+## Instalación completa
 
 ### 1. Clonar el repositorio
 
@@ -688,36 +721,6 @@ Estos resultados se integran en el dashboard web, donde se muestran métricas, g
 
 ---
 
-## Reproducción rápida del análisis de demo
-
-Para reproducir el análisis usado en la demo pública, ejecutar:
-
-```powershell
-python data/tracker/scraper_valorant.py "PoloGB#LAS"
-python src/rank_reference_features.py
-python src/run_full_analysis.py "PoloGB#LAS" --skip-scraper
-python scripts/export_web_data.py
-```
-
-Luego iniciar la versión local con backend:
-
-```powershell
-uvicorn backend.api:app --reload
-```
-
-Abrir en el navegador:
-
-```text
-http://localhost:8000
-```
-
-También se puede revisar la versión pública en GitHub Pages, que utiliza los JSON previamente generados:
-
-```text
-https://jeanalexandrevergarausm.github.io/ValoStats/
-```
-
----
 
 ## Estado del proyecto
 
