@@ -598,8 +598,6 @@ El proyecto utiliza distintas fuentes de datos, separadas según su propósito d
 
 
 ```md
-Archivo:
-
 data/val_stats.csv
 ```
 
