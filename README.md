@@ -17,6 +17,16 @@ La aplicación final incluye:
 
 ---
 
+## Integrantes
+
+| Nombre | Nickname | ROL USM | Correo USM |
+|---|---|---:|---|
+| Lorenzo Gonzales | Vicentejbs | 202230516-9 | vicente.beiza@usm.cl |
+| Matias Perelli | matiasperelli | 202230525-8 | matias.perelli@usm.cl |
+| Jean Alexandre | JeanAlexandreVergaraUSM | 202230562-2 | jean.alexandre@usm.cl |
+
+---
+
 ## Descripción del proyecto
 
 Este proyecto toma estadísticas de jugadores de Valorant y construye un pipeline completo de minería de datos para transformar datos de partidas en información interpretable.
@@ -579,4 +589,157 @@ El sistema filtra jugadores por grupo de rango de lobby y luego compara métrica
 El sistema no pretende reemplazar el análisis experto del juego, sino entregar una interpretación estadística útil, clara y visual.
 
 ---
+
+## Datasets utilizados
+
+El proyecto utiliza distintas fuentes de datos, separadas según su propósito dentro del pipeline.
+
+### 1. Dataset histórico base
+
+
+```md
+Archivo:
+
+```text
+data/val_stats.csv
+```
+
+Este dataset contiene estadísticas históricas de jugadores de Valorant. Se utiliza principalmente para:
+
+* construir variables derivadas;
+* aplicar clustering;
+* descubrir perfiles de jugador;
+* entrenar clasificadores supervisados;
+* generar los datos generales de la web.
+
+### 2. Partidas recientes del jugador objetivo
+
+Archivo:
+
+```text
+data/recent_matches.csv
+```
+
+Este archivo contiene las últimas partidas competitivas extraídas mediante el scraper para un jugador específico. En la demo pública se utiliza el jugador:
+
+```text
+PoloGB#LAS
+```
+
+Estas partidas se usan para generar:
+
+* resumen reciente del jugador;
+* predicción de rendimiento;
+* predicción de estilo;
+* análisis de tendencia;
+* recomendaciones personalizadas.
+
+### 3. Jugadores de referencia
+
+Archivos:
+
+```text
+data/reference_players.csv
+data/rank_reference_matches.csv
+data/rank_reference_profiles.csv
+```
+
+Estos archivos se utilizan para construir una base de comparación. El sistema extrae partidas de jugadores de referencia, calcula perfiles agregados y luego compara al jugador objetivo con referentes de lobbies similares.
+
+### 4. Archivos generados para la web
+
+Archivos:
+
+```text
+docs/web_data.json
+docs/final_player_analysis.json
+```
+
+Estos archivos permiten que la versión pública en GitHub Pages funcione como demo estática, sin necesidad de ejecutar Python en el servidor.
+
+---
+
+## Resultados principales
+
+La versión actual del proyecto permite analizar un jugador de Valorant a partir de sus partidas competitivas recientes.
+
+Para el caso de prueba `PoloGB#LAS`, el sistema generó los siguientes resultados:
+
+* partidas recientes analizadas: 20;
+* rendimiento global detectado: Alto;
+* estilo principal detectado: Apoyo táctico;
+* estilo secundario detectado: Alto impacto;
+* tendencia competitiva reciente: Subida probable;
+* comparación contra jugadores de lobbies similares;
+* generación de recomendaciones personalizadas.
+
+Además, la base de referencia utilizada para comparar jugadores incluye:
+
+* 128 jugadores de referencia;
+* 2560 partidas de referencia;
+* 20 partidas por jugador de referencia.
+
+En la etapa de modelado se aplicaron técnicas de minería de datos como:
+
+* clustering con K-Means;
+* evaluación mediante silhouette score y Davies-Bouldin;
+* clasificación con Random Forest;
+* análisis temporal de rendimiento;
+* búsqueda de jugadores similares mediante Nearest Neighbors con similitud coseno.
+
+Estos resultados se integran en el dashboard web, donde se muestran métricas, gráficos, perfiles, brechas frente al grupo similar, predicción por partida y recomendaciones.
+
+---
+
+## Reproducción rápida del análisis de demo
+
+Para reproducir el análisis usado en la demo pública, ejecutar:
+
+```powershell
+python data/tracker/scraper_valorant.py "PoloGB#LAS"
+python src/rank_reference_features.py
+python src/run_full_analysis.py "PoloGB#LAS" --skip-scraper
+python scripts/export_web_data.py
+```
+
+Luego iniciar la versión local con backend:
+
+```powershell
+uvicorn backend.api:app --reload
+```
+
+Abrir en el navegador:
+
+```text
+http://localhost:8000
+```
+
+También se puede revisar la versión pública en GitHub Pages, que utiliza los JSON previamente generados:
+
+```text
+https://jeanalexandrevergarausm.github.io/ValoStats/
+```
+
+---
+
+## Estado del proyecto
+
+El proyecto se encuentra funcional con:
+
+* scraper local implementado;
+* pipeline completo de minería de datos;
+* limpieza y transformación de datos;
+* generación de variables derivadas;
+* clustering interpretado;
+* clasificación supervisada;
+* análisis de tendencia competitiva;
+* comparación con jugadores similares;
+* recomendaciones personalizadas;
+* backend local con FastAPI;
+* demo pública en GitHub Pages con jugador precargado.
+
+La versión pública permite visualizar el análisis ya generado.
+La versión local permite ejecutar el flujo completo con scraping en vivo.
+
+
 
