@@ -1,0 +1,41 @@
+{
+  "total_reference_matches": 376,
+  "total_reference_players": 19,
+  "players_with_20_matches": 17,
+  "players_with_less_than_20_matches": 2,
+  "rank_group_distribution_matches": {
+    "Gold": 177,
+    "Silver": 155,
+    "Bronze": 29,
+    "Platinum": 11,
+    "Iron": 4
+  },
+  "rank_group_distribution_players": {
+    "Silver": 12,
+    "Gold": 7
+  },
+  "avg_team_rank_distribution_matches": {
+    "Gold 1": 93,
+    "Silver 2": 86,
+    "Gold 2": 62,
+    "Silver 1": 38,
+    "Silver 3": 31,
+    "Gold 3": 22,
+    "Bronze 2": 15,
+    "Bronze 3": 8,
+    "Platinum 1": 8,
+    "Bronze 1": 6,
+    "Platinum 2": 3,
+    "Iron 3": 2,
+    "Iron 1": 1,
+    "Iron 2": 1
+  },
+  "current_rank_distribution_players": {
+    "Platinum 1": 5,
+    "Gold 1": 4,
+    "Gold 2": 4,
+    "Platinum 2": 4,
+    "Gold 3": 1,
+    "Platinum 3": 1
+  }
+}

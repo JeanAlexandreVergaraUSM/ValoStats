@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valostats</title>
+  <title>ValoStats</title>
   <meta
     name="description"
-    content="Valostats — análisis de perfiles de jugadores de Valorant."
+    content="ValoStats — análisis predictivo de perfiles, rendimiento, tendencia y jugadores similares en Valorant."
   />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
+
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+<link rel="shortcut icon" type="image/png" href="./assets/favicon.png" />
+<link rel="icon" type="image/png" href="./assets/logo.png" />
+<link rel="shortcut icon" type="image/png" href="./assets/logo.png" />
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
+
 <body>
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
@@ -24,27 +31,33 @@
 
   <header class="topbar">
     <div class="brand-wrap">
-      <div class="brand-logo">V</div>
+      <div class="brand-logo">
+  <img src="./assets/logo.png" alt="Logo ValoStats" />
+</div>
       <div>
         <div class="brand-title">VALOSTATS</div>
         <div class="brand-subtitle">Player analysis for Valorant</div>
       </div>
     </div>
 
-    <nav class="topnav">
-      <a href="#analyzer">Analizador</a>
-      <a href="#tops">Top jugadores</a>
+    <nav class="top-nav" aria-label="Navegación principal">
+      <button class="nav-tab active" type="button" data-view="analyzer">Analizador</button>
+      <button class="nav-tab" type="button" data-view="info">Información</button>
+      <button class="nav-tab" type="button" data-view="top">Top jugadores</button>
     </nav>
   </header>
 
   <main class="page-shell">
-    <section class="hero">
+    <!-- Vista 1: Analizador -->
+    <section id="hero" class="hero page-view-section view-analyzer">
       <div class="hero-content">
         <div class="eyebrow">VALORANT PLAYER ANALYSIS</div>
+
         <h1>Busca un jugador y descubre cómo juega.</h1>
+
         <p>
-          Valostats analiza estadísticas reales para mostrar el perfil principal del jugador,
-          su perfil secundario, sus puntos fuertes y una recomendación personalizada.
+          ValoStats analiza partidas competitivas recientes para estimar rendimiento,
+          estilo de juego, tendencia competitiva y jugadores similares.
         </p>
 
         <div class="hero-search">
@@ -53,20 +66,23 @@
               type="text"
               id="playerSearch"
               list="playerOptions"
-              placeholder="Busca un jugador por nombre o tag..."
+              placeholder="Ejemplo: PoloGB#LAS"
               autocomplete="off"
             />
             <datalist id="playerOptions"></datalist>
           </div>
-          <button id="analyzeBtn" class="primary-btn">Analizar jugador</button>
+
+          <button id="analyzeBtn" class="primary-btn" type="button">
+            Analizar jugador
+          </button>
         </div>
 
         <div class="hero-tags">
-          <span class="pill">Perfil principal</span>
-          <span class="pill">Perfil secundario</span>
-          <span class="pill">Radar comparativo</span>
-          <span class="pill">Interpretación</span>
-          <span class="pill">Recomendación personalizada</span>
+          <span class="pill">Rendimiento</span>
+          <span class="pill">Estilo</span>
+          <span class="pill">Tendencia</span>
+          <span class="pill">Jugadores similares</span>
+          <span class="pill">Recomendaciones</span>
         </div>
       </div>
 
@@ -78,32 +94,36 @@
 
         <div class="hero-panel glass-card">
           <div class="mini-title">Qué verás del jugador</div>
+
           <div class="mini-metrics">
             <div class="mini-metric-item">
               <span>Perfil principal</span>
               <strong>Estilo dominante</strong>
             </div>
+
             <div class="mini-metric-item">
-              <span>Perfil secundario</span>
-              <strong>Tendencia complementaria</strong>
+              <span>Rendimiento</span>
+              <strong>Bajo a destacado</strong>
             </div>
+
             <div class="mini-metric-item">
-              <span>Interpretación</span>
-              <strong>Lectura del estilo</strong>
+              <span>Tendencia</span>
+              <strong>Progreso reciente</strong>
             </div>
+
             <div class="mini-metric-item">
-              <span>Recomendación</span>
-              <strong>Mejoras y agentes sugeridos</strong>
+              <span>Referentes</span>
+              <strong>Lobbies similares</strong>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="analyzer" class="section analyzer-section">
+    <section id="analyzer" class="section analyzer-section page-view-section view-analyzer">
       <div class="section-header">
         <h2>Analizador de jugador</h2>
-        <p>Perfil, datos clave y lectura del estilo de juego.</p>
+        <p>Perfil, datos clave, predicciones y lectura del estilo de juego.</p>
       </div>
 
       <div class="analyzer-layout">
@@ -112,8 +132,8 @@
             <div class="spotlight-header">
               <div>
                 <div class="eyebrow small">PLAYER SPOTLIGHT</div>
-                <h3 id="playerName">Selecciona un jugador</h3>
-                <p id="playerTag" class="muted">-</p>
+                <h3 id="playerName">Ingresa un jugador</h3>
+                <p id="playerTag" class="muted">Busca por Riot ID, por ejemplo PoloGB#LAS</p>
               </div>
             </div>
 
@@ -122,6 +142,7 @@
                 <span class="small-label">Perfil principal</span>
                 <strong id="primaryProfile">-</strong>
               </div>
+
               <div class="profile-secondary">
                 <span class="small-label">Perfil secundario</span>
                 <strong id="secondaryProfile">-</strong>
@@ -130,7 +151,7 @@
 
             <div class="mix-line">
               <span class="small-label">Lectura del estilo</span>
-              <strong id="profileMix">-</strong>
+              <strong id="profileMix">Escribe un jugador y presiona “Analizar jugador”</strong>
             </div>
           </div>
 
@@ -139,22 +160,27 @@
               <span>Kills</span>
               <strong id="killsValue">-</strong>
             </div>
+
             <div class="glass-card kpi-card">
               <span>Deaths</span>
               <strong id="deathsValue">-</strong>
             </div>
+
             <div class="glass-card kpi-card">
               <span>Assists</span>
               <strong id="assistsValue">-</strong>
             </div>
+
             <div class="glass-card kpi-card">
               <span>K/D</span>
               <strong id="kdValue">-</strong>
             </div>
+
             <div class="glass-card kpi-card">
               <span>HS%</span>
               <strong id="hsValue">-</strong>
             </div>
+
             <div class="glass-card kpi-card">
               <span>Win%</span>
               <strong id="winValue">-</strong>
@@ -163,12 +189,16 @@
 
           <div class="glass-card recommendation-card">
             <div class="mini-title">Interpretación del perfil</div>
-            <p id="profileExplanation" class="profile-text">-</p>
+            <div id="profileExplanation" class="profile-text">
+              Aquí aparecerá una interpretación del perfil cuando selecciones o analices un jugador.
+            </div>
           </div>
 
           <div class="glass-card recommendation-card recommendation-accent">
             <div class="mini-title">Recomendación personalizada</div>
-            <p id="recommendationText" class="profile-text">-</p>
+            <div id="recommendationText" class="profile-text">
+              Aquí aparecerá una recomendación personalizada basada en el estilo detectado.
+            </div>
           </div>
         </div>
 
@@ -192,12 +222,157 @@
       </div>
     </section>
 
-    <section id="tops" class="section">
+    <!-- Vista 2: Información -->
+    <section id="methodology" class="methodology-section page-view-section view-info hidden-view">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">INFORMACIÓN DEL MODELO</span>
+          <h2>Qué resuelve ValoStats</h2>
+        </div>
+
+        <p>
+          Resumen metodológico para entender el problema, las métricas usadas,
+          las tareas de aprendizaje y las limitaciones del sistema.
+        </p>
+      </div>
+
+      <div class="methodology-grid">
+        <article class="methodology-card methodology-card-wide">
+          <span>Problema</span>
+          <h3>Interpretar estadísticas competitivas recientes</h3>
+          <p>
+            En Valorant existen muchas métricas disponibles, pero suelen aparecer separadas
+            y no siempre entregan una conclusión clara. ValoStats transforma esas estadísticas
+            en una lectura práctica del jugador: rendimiento reciente, estilo de juego,
+            tendencia competitiva y comparación contra jugadores de lobbies similares.
+          </p>
+        </article>
+
+        <article class="methodology-card">
+          <span>Entrada</span>
+          <h3>Riot ID y partidas competitivas</h3>
+          <p>
+            El usuario ingresa un Riot ID, por ejemplo PoloGB#LAS. Luego el sistema extrae
+            partidas competitivas recientes desde Tracker.gg y genera métricas por partida.
+          </p>
+        </article>
+
+        <article class="methodology-card">
+          <span>Salida esperada</span>
+          <h3>Predicciones interpretables</h3>
+          <p>
+            El sistema entrega rendimiento, estilo principal, estilo secundario, tendencia,
+            jugadores similares, brechas y recomendaciones personalizadas.
+          </p>
+        </article>
+      </div>
+
+      <div class="methodology-grid methodology-grid-four">
+        <article class="methodology-card">
+          <span>Tarea 1</span>
+          <h3>Rendimiento</h3>
+          <p>
+            Clasifica partidas y resumen global como Bajo, Medio, Alto o Destacado usando
+            ACS, K/D, ADR, KAST, DDA, resultado y otras métricas recientes.
+          </p>
+        </article>
+
+        <article class="methodology-card">
+          <span>Tarea 2</span>
+          <h3>Estilo de juego</h3>
+          <p>
+            Clasifica el perfil como Alto impacto, Apoyo táctico u Ofensivo consistente
+            usando variables derivadas como agresividad, impacto, soporte y consistencia.
+          </p>
+        </article>
+
+        <article class="methodology-card">
+          <span>Tarea 3</span>
+          <h3>Evolución temporal</h3>
+          <p>
+            Compara las partidas 11 a 20 contra las partidas 1 a 10 para detectar progreso,
+            estabilidad, caída o cambio de estilo reciente.
+          </p>
+        </article>
+
+        <article class="methodology-card">
+          <span>Tarea 4</span>
+          <h3>Jugadores similares</h3>
+          <p>
+            Usa Nearest Neighbors con similitud coseno para comparar al jugador con referentes
+            que jugaron en lobbies de rango promedio similar.
+          </p>
+        </article>
+      </div>
+
+      <div class="methodology-panel">
+        <div>
+          <span class="section-kicker">MÉTRICAS COMPETITIVAS</span>
+          <h3>Métricas usadas por ValoStats</h3>
+        </div>
+
+        <div class="metrics-list">
+          <span>ACS</span>
+          <span>ADR</span>
+          <span>K/D</span>
+          <span>KAST</span>
+          <span>HS%</span>
+          <span>DDA</span>
+          <span>First kills</span>
+          <span>First deaths</span>
+          <span>Entry success</span>
+          <span>TRS</span>
+          <span>Multi kills</span>
+        </div>
+
+        <p>
+          Algunas métricas más específicas, como clutch rate y utility impact, quedan como
+          mejora futura porque requieren datos más detallados de ronda. Para aproximar aporte
+          táctico se usan asistencias, KAST, soporte y participación por ronda.
+        </p>
+      </div>
+
+      <div class="methodology-grid">
+        <article class="methodology-card">
+          <span>Construcción de perfiles</span>
+          <h3>K-Means y variables derivadas</h3>
+          <p>
+            Los perfiles se construyen con variables derivadas del dataset histórico. Antes del
+            clustering, las variables se escalan con StandardScaler para evitar que una métrica
+            domine solo por su magnitud.
+          </p>
+        </article>
+
+        <article class="methodology-card">
+          <span>Elección de k</span>
+          <h3>k = 3</h3>
+          <p>
+            Se selecciona k = 3 porque permite obtener tres perfiles interpretables:
+            Alto impacto, Apoyo táctico y Ofensivo consistente. La elección se apoya en
+            silhouette score, Davies-Bouldin y revisión del método del codo.
+          </p>
+        </article>
+
+        <article class="methodology-card">
+          <span>Validación</span>
+          <h3>Métricas e interpretación</h3>
+          <p>
+            Los perfiles se validan revisando métricas internas de clustering y promedios de
+            cada grupo. Además, se entrena un clasificador para asignar nuevas partidas o
+            nuevos jugadores a los perfiles creados.
+          </p>
+        </article>
+      </div>
+
+    </section>
+
+    <!-- Vista 3: Top jugadores -->
+    <section id="topPlayers" class="section page-view-section view-top hidden-view">
       <div class="section-header">
         <h2>Top jugadores por perfil</h2>
         <p>
-          Cada ranking usa solo jugadores con muestra suficiente y muestra a los mejores dentro
-          de cada estilo de juego.
+          Cada ranking usa jugadores con muestra suficiente y muestra a los mejores dentro
+          de cada estilo de juego construido por el clustering.
         </p>
       </div>
 
@@ -206,7 +381,7 @@
   </main>
 
   <footer class="footer">
-    <div>VALOSTATS · GitHub Pages Demo</div>
+    <div>VALOSTATS · Demo local / GitHub Pages</div>
     <div>Análisis de perfiles de jugadores de Valorant</div>
   </footer>
 

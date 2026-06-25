@@ -1,0 +1,21 @@
+player_name,tag,current_rank,match_rank,avg_team_rank,match_id,date,mode,map,agent,result,team_score,enemy_score,rounds_played,tracker_score,acs,kills,deaths,assists,kill_diff,kd_ratio,dda,adr,headshot_percent,kast,first_kills,first_deaths,multi_kills
+PoloGB,LAS,Platinum 2,Platinum 2,Silver 2,5be64bed-e492-47ea-82a3-a1ebf4add382,"30/5/26, 2:12",Competitive,Ascent,Brimstone,Win,13,9,22,974,336,25,14,5,11,1.8,98.0,230.7,18.0,86.0,3,0,2
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,a5b7b722-3871-4771-bd19-4e448d29ff25,"30/5/26, 1:36",Competitive,Fracture,Gekko,Win,13,8,21,853,290,21,12,4,9,1.8,65.0,179.7,17.0,76.0,3,0,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 1,37c93da3-084b-47f6-8b7f-6a255f56df37,"30/5/26, 0:54",Competitive,Split,Vyse,Loss,10,13,23,814,280,22,16,7,6,1.4,48.0,182.7,12.0,83.0,1,2,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 1,1f75f828-f78f-489c-af30-b9a3296ac257,"30/5/26, 0:12",Competitive,Haven,Brimstone,Win,13,10,23,845,259,19,17,16,2,1.1,23.0,163.3,23.0,87.0,2,4,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,32c4eb29-206e-444f-ad6b-18ee273ff642,"26/5/26, 21:06",Competitive,Haven,Cypher,Loss,7,13,20,429,166,10,14,3,-4,0.7,-13.0,111.0,12.0,75.0,1,2,0
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 1,2340f661-48a2-495a-bb73-6981aa697ad8,"19/5/26, 0:11",Competitive,Ascent,Cypher,Win,13,10,23,563,223,18,15,2,3,1.2,18.0,166.6,20.0,61.0,2,2,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,5248cd8e-2d7d-4c88-ba82-b12300b77c5a,"18/5/26, 23:37",Competitive,Pearl,Gekko,Win,13,5,18,912,247,16,7,3,9,2.3,88.0,173.3,20.0,89.0,2,1,0
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,093741dc-9467-4bab-bd37-c27ad5b26a33,"18/5/26, 23:03",Competitive,Ascent,Cypher,Win,13,6,19,742,211,15,10,3,5,1.5,33.0,146.1,24.0,79.0,2,1,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 1,796e584a-f8a4-46ad-a8e5-56e407ecdd14,"18/5/26, 22:27",Competitive,Split,Cypher,Win,13,6,19,827,238,18,8,5,10,2.2,75.0,147.7,25.0,79.0,2,0,1
+PoloGB,LAS,Platinum 2,Platinum 2,Silver 1,3ac204db-125f-4666-ac14-c7af5c5f8aad,"18/5/26, 21:44",Competitive,Breeze,Cypher,Win,13,11,24,945,289,26,10,6,16,2.6,95.0,190.2,16.0,92.0,2,0,2
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 3,68e045fa-77af-4317-b1cf-91a8119558e5,"30/4/26, 0:02",Competitive,Breeze,Brimstone,Loss,11,13,24,725,251,21,14,8,7,1.5,52.0,163.0,18.0,75.0,2,2,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,77787943-6054-4c0e-a6fb-dbd7eddfb044,"27/4/26, 0:06",Competitive,Pearl,Gekko,Loss,13,15,28,379,176,16,21,7,-5,0.8,-21.0,126.7,21.0,61.0,1,3,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 3,ca2b88b6-a6b4-47a4-94a4-89d1a64912af,"23/4/26, 0:02",Competitive,Lotus,Gekko,Win,13,7,20,670,235,17,15,6,2,1.1,20.0,154.8,21.0,70.0,1,1,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,caf9818f-40f6-4fa4-9fd0-1367a80bf33f,"22/4/26, 23:26",Competitive,Haven,Gekko,Loss,8,13,21,203,133,10,15,5,-5,0.7,-57.0,84.9,16.0,62.0,1,2,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,97f5dfbb-d0e9-4643-a06b-f693ee1f0e59,"21/4/26, 22:54",Competitive,Split,Cypher,Draw,15,15,30,741,276,29,18,7,11,1.6,66.0,187.1,17.0,70.0,0,1,3
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 1,64766e3a-d390-485e-864d-f0a3a7ed481a,"21/4/26, 21:17",Competitive,Bind,Cypher,Win,13,4,17,715,166,10,8,4,2,1.2,27.0,115.8,30.0,88.0,0,2,0
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,21cf8b70-3931-4cc9-8fba-5ac756bd9bff,"20/4/26, 20:52",Competitive,Lotus,Vyse,Loss,4,13,17,444,218,9,13,7,-4,0.7,32.0,158.0,13.0,59.0,0,0,0
+PoloGB,LAS,Platinum 2,Platinum 2,Silver 3,6a3223e3-d8ae-4b29-af98-f965c57603a6,"15/4/26, 22:08",Competitive,Breeze,Deadlock,Win,14,12,26,674,173,15,15,6,0,1.0,15.0,124.2,27.0,88.0,2,0,0
+PoloGB,LAS,Platinum 2,Platinum 2,Platinum 1,539d5306-4f7d-46b5-824a-d747eccd6db9,"15/4/26, 21:17",Competitive,Split,Vyse,Loss,7,13,20,161,118,9,15,4,-6,0.6,-62.0,80.4,14.0,60.0,0,1,1
+PoloGB,LAS,Platinum 2,Platinum 2,Gold 2,a350c7d9-140b-4c1f-b01e-abf92ca16354,"15/4/26, 1:10",Competitive,Pearl,Vyse,Loss,9,13,22,437,172,13,16,6,-3,0.8,-14.0,122.5,22.0,73.0,0,0,0
