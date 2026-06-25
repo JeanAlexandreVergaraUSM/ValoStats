@@ -860,7 +860,7 @@ class ValorantTrackerScraper:
         }
 
         print(
-            f"  ✓ {row_data['map']} | {row_data['agent']} | "
+            f"  {row_data['map']} | {row_data['agent']} | "
             f"{row_data['result']} | TRS {row_data['tracker_score']} | "
             f"ACS {row_data['acs']} | "
             f"{row_data['kills']}/{row_data['deaths']}/{row_data['assists']} | "
@@ -923,7 +923,7 @@ class ValorantTrackerScraper:
             finally:
                 await self.close_detail_page(detail_page, open_mode, profile_url)
 
-        print(f"\n📊 Total partidas extraídas desde detalles: {len(matches)}")
+        print(f"\nTotal partidas extraídas desde detalles: {len(matches)}")
         return matches
 
     async def fetch_matches(
@@ -962,11 +962,11 @@ class ValorantTrackerScraper:
 
             await page.screenshot(path=png_path, full_page=True)
 
-            print(f"  🧪 Debug guardado: {html_path}")
-            print(f"  🧪 Screenshot guardado: {png_path}")
+            print(f"  Debug guardado: {html_path}")
+            print(f"  Screenshot guardado: {png_path}")
 
         except Exception as exc:
-            print(f"  ⚠️ No pude guardar debug: {exc}")
+            print(f"  No pude guardar debug: {exc}")
 
     async def save_to_csv(self, matches, folder: str = OUTPUT_FOLDER):
         os.makedirs(folder, exist_ok=True)
@@ -1008,7 +1008,7 @@ class ValorantTrackerScraper:
             writer.writeheader()
             writer.writerows(matches)
 
-        print(f"\n✅ CSV guardado: {filepath} ({len(matches)} filas)")
+        print(f"\nCSV guardado: {filepath} ({len(matches)} filas)")
 
     async def close(self):
         global CHROME_PROCESS

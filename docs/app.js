@@ -5,11 +5,9 @@ const state = {
   isAnalyzing: false,
 };
 
-const API_BASE_URL = window.location.hostname.includes("github.io")
-  ? "https://valostats-backend.onrender.com"
-  : "";
-
-const API_ANALYZE_URL = `${API_BASE_URL}/api/analyze`;
+const API_BASE_URL = "";
+const API_ANALYZE_URL = "/api/analyze";
+const IS_GITHUB_PAGES = window.location.hostname.includes("github.io");
 
 const PROFILE_COLORS = {
   "Alto impacto": "#7c83ff",
@@ -1348,7 +1346,55 @@ function setAnalyzeLoading(isLoading, message = "Analizando...") {
   }
 }
 
+async function loadStaticFinalAnalysis(riotId) {
+  const response = await fetch("./final_player_analysis.json");
+
+  if (!response.ok) {
+    throw new Error("No se pudo cargar final_player_analysis.json");
+  }
+
+  const analysis = await response.json();
+
+  const requested = safeLower(riotId).replace(/\s+/g, "");
+  const player = analysis.player || {};
+  const storedRiotId = safeLower(
+    player.riot_id || `${player.name || ""}#${String(player.tag || "").replace("#", "")}`
+  ).replace(/\s+/g, "");
+
+  if (storedRiotId && requested !== storedRiotId) {
+    throw new Error(
+      `La demo pública tiene cargado ${player.riot_id || storedRiotId}, no ${riotId}.`
+    );
+  }
+
+  state.currentAnalysis = analysis;
+  state.selectedPlayer = null;
+
+  renderSelectedPlayer();
+
+  setTimeout(() => {
+    byId("analyzer").scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, 80);
+}
+
 async function analyzeRiotIdWithBackend(riotId) {
+  if (IS_GITHUB_PAGES) {
+    try {
+      await loadStaticFinalAnalysis(riotId);
+      return;
+    } catch (error) {
+      alert(
+        "Esta versión pública funciona con un jugador precargado. " +
+        error.message +
+        " Para scraping en vivo se debe ejecutar el backend local."
+      );
+      return;
+    }
+  }
+
   setAnalyzeLoading(true, "Analizando...");
 
   try {
