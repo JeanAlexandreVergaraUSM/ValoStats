@@ -62,7 +62,7 @@ def check_script_exists(script_path):
 
 def run_command(command, step_name):
     print("\n" + "=" * 90)
-    print(f"▶ Ejecutando paso: {step_name}")
+    print(f"Ejecutando paso: {step_name}")
     print("=" * 90)
     print("Comando:")
     print(" ".join(str(part) for part in command))
@@ -96,7 +96,7 @@ def run_command(command, step_name):
         return_code = process.wait()
 
     except KeyboardInterrupt:
-        print("\n🛑 Proceso detenido manualmente.")
+        print("\nProceso detenido manualmente.")
         process.terminate()
         process.wait()
         raise
@@ -130,7 +130,7 @@ def check_output(path, label):
             f"El archivo de salida existe, pero está vacío: {path}"
         )
 
-    print(f"  ✓ {label}: {path}")
+    print(f"  {label}: {path}")
 
 
 def run_pipeline(riot_id, skip_scraper=False, refresh_reference=False):

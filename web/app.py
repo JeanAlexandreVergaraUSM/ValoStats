@@ -1,3 +1,6 @@
+# Prototipo antiguo.
+# La versión final del proyecto se encuentra en docs/ y backend/api.py.
+
 import sys
 from pathlib import Path
 
@@ -27,7 +30,7 @@ from src.preprocessing import (
 
 st.set_page_config(
     page_title="Valostats",
-    page_icon="🎮",
+    page_icon="V",
     layout="wide",
     initial_sidebar_state="collapsed",
 )

@@ -222,24 +222,24 @@ def build_final_payload():
     )
 
     final_payload = {
-    "player": performance_payload.get("player", {}),
-    "summary": performance_payload.get("summary", {}),
-    "prediction_summary": prediction_summary,
-    "temporal_evolution": trend_payload.get("global_trend_prediction", {}),
-    "rank_context": similar_players_payload.get("rank_context", {}),
-    "similar_group_summary": similar_players_payload.get("similar_group_summary", {}),
-    "gap_analysis": similar_players_payload.get("gap_analysis", {}),
-    "similar_players": similar_players_payload.get("similar_players", []),
-    "recommendations": similar_players_payload.get("recommendations", []),
-    "matches": merged_matches,
-    "methodology": methodology,
-    "source_files": {
-        "performance": str(PERFORMANCE_PATH.relative_to(PROJECT_ROOT)),
-        "style": str(STYLE_PATH.relative_to(PROJECT_ROOT)),
-        "trend": str(TREND_PATH.relative_to(PROJECT_ROOT)),
-        "similar_players": str(SIMILAR_PLAYERS_PATH.relative_to(PROJECT_ROOT)),
-    },
-}
+        "player": performance_payload.get("player", {}),
+        "summary": performance_payload.get("summary", {}),
+        "prediction_summary": prediction_summary,
+        "temporal_evolution": trend_payload.get("global_trend_prediction", {}),
+        "rank_context": similar_players_payload.get("rank_context", {}),
+        "similar_group_summary": similar_players_payload.get("similar_group_summary", {}),
+        "gap_analysis": similar_players_payload.get("gap_analysis", {}),
+        "similar_players": similar_players_payload.get("similar_players", []),
+        "recommendations": similar_players_payload.get("recommendations", []),
+        "matches": merged_matches,
+        "methodology": methodology,
+        "source_files": {
+            "performance": str(PERFORMANCE_PATH.relative_to(PROJECT_ROOT)),
+            "style": str(STYLE_PATH.relative_to(PROJECT_ROOT)),
+            "trend": str(TREND_PATH.relative_to(PROJECT_ROOT)),
+            "similar_players": str(SIMILAR_PLAYERS_PATH.relative_to(PROJECT_ROOT)),
+        },
+    }
 
     return final_payload
 

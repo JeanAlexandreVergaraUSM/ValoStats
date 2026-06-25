@@ -279,7 +279,7 @@ class ValorantTrackerScraper:
 
         self.playwright = await async_playwright().start()
 
-        print("🔌 Conectando al Chrome real abierto en modo debugging...")
+        print("Conectando al Chrome real abierto en modo debugging...")
 
         try:
             self.browser = await self.playwright.chromium.connect_over_cdp(
@@ -899,7 +899,7 @@ class ValorantTrackerScraper:
             rows = await self.get_profile_match_rows()
 
             if index >= len(rows):
-                print(f"⚠️ Ya no existe la partida índice {index + 1}.")
+                print(f"Ya no existe la partida índice {index + 1}.")
                 break
 
             profile_row = rows[index]

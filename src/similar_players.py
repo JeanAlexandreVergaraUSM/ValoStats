@@ -614,8 +614,8 @@ def main():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as file:
         json.dump(output_payload, file, ensure_ascii=False, indent=2)
 
-    print("\n✅ Jugadores similares por rango generados correctamente")
-    print(f"📄 Archivo JSON: {OUTPUT_PATH}")
+    print("\n Jugadores similares por rango generados correctamente")
+    print(f" Archivo JSON: {OUTPUT_PATH}")
 
     print("\nContexto de rango del jugador objetivo:")
     print(f"  Media numérica de lobby: {target_rank_context['avg_team_rank_mean_value']}")

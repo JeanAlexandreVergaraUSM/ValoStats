@@ -1554,7 +1554,8 @@ async function init() {
     bindEvents();
     bindViewTabs();
     renderSelectedPlayer();
-    renderTopBoards();
+renderTopBoards();
+renderInfoModelCard();
   } catch (error) {
     console.error(error);
     document.body.innerHTML = `
