@@ -22,7 +22,7 @@ La aplicación final incluye:
 | Nombre | Nickname | ROL USM | Correo USM |
 |---|---|---:|---|
 | Lorenzo Gonzalez | Lorenx003 | 202230550-9 | lorenzo.gonzalez@usm.cl |
-| Fernando Zamora |  | 202230 | fernando.zamorav@usm.cl |
+| Fernando Zamora | Kitchkaitch | 202230 | fernando.zamorav@usm.cl |
 | Jean Alexandre | JeanAlexandreVergaraUSM | 202230562-2 | jean.alexandre@usm.cl |
 
 ---
