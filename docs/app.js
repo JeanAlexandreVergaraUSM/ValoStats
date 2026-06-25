@@ -1067,14 +1067,6 @@ const deltas = temporal.deltas || {};
           <span class="mini-badge">Entry ${formatSigned(gap.entry_success_gap, 2)}</span>
         </div>
       </div>
-
-      <div class="glass-card" style="padding:20px;">
-        <span class="section-kicker">Lectura del modelo</span>
-        <h3 style="margin:8px 0 14px;">Qué está prediciendo</h3>
-        <p class="muted" style="margin:0; line-height:1.7;">
-          ${escapeHtml(cleanText(methodology.problem || "El sistema predice rendimiento, estilo y tendencia desde partidas recientes."))}
-        </p>
-      </div>
     </div>
 
     <div class="glass-card" style="padding:20px; margin-bottom:18px;">
@@ -1520,6 +1512,37 @@ function bindEvents() {
       runSearchAndFocusAnalysis();
     }
   });
+}
+
+function renderInfoModelCard() {
+  const infoSection = byId("methodology") || document.querySelector(".view-info");
+
+  if (!infoSection || byId("infoModelReadingCard")) {
+    return;
+  }
+
+  const card = document.createElement("div");
+  card.id = "infoModelReadingCard";
+  card.className = "glass-card";
+  card.style.padding = "28px";
+  card.style.marginTop = "22px";
+  card.style.marginBottom = "22px";
+
+  card.innerHTML = `
+    <span class="section-kicker">Lectura del modelo</span>
+    <h3 style="margin:8px 0 14px;">Qué está prediciendo</h3>
+    <p class="muted" style="margin:0; line-height:1.7;">
+      El modelo utiliza las últimas 20 partidas competitivas del jugador para estimar su rendimiento reciente, estilo de juego predominante, tendencia competitiva y similitud con jugadores de referencia. En la versión pública, este análisis se muestra desde un archivo previamente generado.
+    </p>
+  `;
+
+  const header = infoSection.querySelector(".section-header");
+
+  if (header) {
+    header.insertAdjacentElement("afterend", card);
+  } else {
+    infoSection.prepend(card);
+  }
 }
 
 async function init() {
